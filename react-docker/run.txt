@@ -1,0 +1,44 @@
+//BUild docker
+docker build -t react-docker .
+
+# Run docker
+docker run react-docker
+
+
+Local:   http://localhost:5173/
+  ➜  Network: use --host to expose "Even not working let's some work ro docker inform to should listen that specific PORT
+  in run time http://localhost:5173/ in this port host is missing container in isoleted invironment by default they don't expose
+  PORT any one else the PORT runnig in side port they not accesseble out side.
+  Then what we do"
+  #=> PORT mapping
+  docker run -p 5173:5173 react-docker
+ Even did not working yet because vite
+
+ # modeyfy packege.json add  "--host"
+"dev": "vite --host", and rerun-> docker run -p 5173:5173 react-docker
+  
+And got some error :)  "docker run -p 5173:5173 react-docker"
+
+failed: port is already allocated.
+#run command to clear Images and containers
+-> docker ps  "this give list of container"
+-> docker ps -a "show  all " 
+-> docker stop c3d "stop container where c3d is container id first 3 charactor"
+--> docker container prun "stop all inactive containers" 
+also use -> docker rm aa7  or-->  docker rm aa7 --force "aa7 id first 3 charactor"
+
+in Breaf command =====================
+-> docker build -t react-docker .
+-> docker run react-docker         'escapble'
+
+-> docker build -t react-docker .
+-> docker run -p 5173:5173 react-docker
+
+-> docker run -p 5173:5173 -v "$(pwd):/app" -v /app/node_modules react-docker "any file changes instant update on docker"
+
+==========Images publish login============
+-> docker login
+-> docker tag react-docker username/appname "username/react-docker"
+-> docker push abhismith/react-docker   
+
+===========Docker compose============================
